@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -18,6 +19,18 @@ abstract class _PokemonDetailsViewModelBase with Store {
 
   @observable
   bool loading = false;
+
+  List<Color> abilitiesColors = [
+    Colors.purpleAccent,
+    Colors.lightGreen,
+    Colors.pinkAccent,
+  ];
+
+  List<Color> typesColors = [
+    Colors.cyanAccent,
+    Colors.indigoAccent,
+    Colors.limeAccent,
+  ];
 
   @action
   Future<void> obterDetalhesPokemon(String url) async {

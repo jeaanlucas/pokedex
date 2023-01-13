@@ -27,18 +27,18 @@ class _PokemonListViewState extends State<PokemonListView> {
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Pokedex do Jean :)',
+          'Pokedex by Jean :)',
         ),
       ),
       body: Column(
         children: [
-          PokemonNavigator(
+          PokemonNavigatorWidget(
             viewModel: _viewModel,
           ),
           const SizedBox(
             height: 25,
           ),
-          PokemonList(
+          PokemonListWidget(
             viewModel: _viewModel,
           ),
         ],

@@ -42,6 +42,7 @@ class AppModule extends Module {
       '/detalhes-pokemon',
       child: (_, args) => PokemonDetailsView(
         urlDetalhes: args.data['urlDetalhes'],
+        nomePokemon: args.data['nomePokemon'],
       ),
     ),
   ];

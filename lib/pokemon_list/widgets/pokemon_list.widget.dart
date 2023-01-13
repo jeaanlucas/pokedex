@@ -6,8 +6,8 @@ import '../../utils/extensions/string.extension.dart';
 import '../models/pokemon_list_results.model.dart';
 import '../views/pokemon_list.viewmodel.dart';
 
-class PokemonList extends StatelessWidget {
-  const PokemonList({
+class PokemonListWidget extends StatelessWidget {
+  const PokemonListWidget({
     required this.viewModel,
     Key? key,
   }) : super(key: key);
@@ -52,6 +52,7 @@ class PokemonList extends StatelessWidget {
                             '/detalhes-pokemon',
                             arguments: {
                               'urlDetalhes': pokemonResult.url,
+                              'nomePokemon': pokemonResult.name,
                             },
                           ),
                         ),

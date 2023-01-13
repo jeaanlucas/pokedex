@@ -8,6 +8,7 @@ class PokemonDetailsModel {
     required this.id,
     required this.name,
     required this.frontSpriteDefault,
+    required this.backSpriteDefault,
     this.abilities,
     this.types,
   });
@@ -20,6 +21,7 @@ class PokemonDetailsModel {
         id: json['id'],
         name: json['name'],
         frontSpriteDefault: json['sprites']['front_default'],
+        backSpriteDefault: json['sprites']['back_default'],
         abilities: json['abilities'] == null
             ? []
             : List<PokemonDetailsAbilitiesModel>.from(
@@ -40,6 +42,7 @@ class PokemonDetailsModel {
   final int id;
   final String name;
   final String frontSpriteDefault;
+  final String backSpriteDefault;
   final List<PokemonDetailsTypesModel>? types;
 
   String toJson() => json.encode(toMap());
@@ -49,6 +52,7 @@ class PokemonDetailsModel {
         'name': name,
         'sprites': {
           'front_default': frontSpriteDefault,
+          'back_default': backSpriteDefault,
         },
         'abilities': abilities == null
             ? []

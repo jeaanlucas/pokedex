@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import '../views/pokemon_list.viewmodel.dart';
 
-class PokemonNavigator extends StatelessWidget {
-  const PokemonNavigator({
+class PokemonNavigatorWidget extends StatelessWidget {
+  const PokemonNavigatorWidget({
     required this.viewModel,
     Key? key,
   }) : super(key: key);
@@ -30,7 +30,7 @@ class PokemonNavigator extends StatelessWidget {
                         : null,
                   ),
                   const Text(
-                    'NAVEGAÇÃO',
+                    'NAVIGATION',
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 20.0,
