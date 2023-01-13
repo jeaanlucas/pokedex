@@ -11,9 +11,7 @@ class PokemonListUseCase extends Disposable {
     PokemonListModel? pokemonListModel;
 
     try {
-      Response response = await _pokemonListRepository.obterListPokemons(
-        url,
-      );
+      Response response = await _pokemonListRepository.obterListPokemons(url);
 
       if (response.data != null) {
         pokemonListModel = PokemonListModel.fromMap(response.data);

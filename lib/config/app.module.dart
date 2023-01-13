@@ -28,10 +28,6 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => PokemonListView()),
-    // ChildRoute('/onboarding', child: (_, args) => const OnBoardingView()),
-    // ModuleRoute('/root', module: RootModule()),
-    // ModuleRoute('/escolha-fluxo', module: EscolhaFluxoModule()),
-    // ModuleRoute('/login', module: LoginModule()),
-    // ModuleRoute('/webview', module: WebviewModule()),
+    // ChildRoute('/detalhes-pokemon', child: (_, args) => DetalhesPokemonView()),
   ];
 }

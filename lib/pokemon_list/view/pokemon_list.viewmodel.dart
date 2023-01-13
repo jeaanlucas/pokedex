@@ -17,18 +17,16 @@ abstract class _PokemonListViewModelBase with Store {
   PokemonListModel? pokemonList;
 
   @observable
-  bool loadingpokemons = false;
+  bool loading = false;
 
   @action
   Future<void> carregarPokemons(String url) async {
     try {
-      loadingpokemons = true;
-      pokemonList = await _pokemonListUseCase.execute(
-        url,
-      );
-      loadingpokemons = false;
+      loading = true;
+      pokemonList = await _pokemonListUseCase.execute(url);
+      loading = false;
     } catch (e) {
-      loadingpokemons = false;
+      loading = false;
       rethrow;
     }
   }
