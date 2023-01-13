@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:poke_dex/pokemon_list/model/pokemon_list_results.model.dart';
-import 'package:poke_dex/pokemon_list/view/pokemon_list.viewmodel.dart';
+import 'package:poke_dex/pokemon_list/models/pokemon_list_results.model.dart';
+import 'package:poke_dex/pokemon_list/views/pokemon_list.viewmodel.dart';
 import 'package:poke_dex/utils/extensions/string.extension.dart';
 
 class PokemonList extends StatelessWidget {
   final PokemonListViewModel viewModel;
 
-  PokemonList({
+  const PokemonList({
     required this.viewModel,
     Key? key,
   }) : super(key: key);
@@ -49,9 +49,9 @@ class PokemonList extends StatelessWidget {
                           ),
                         ),
                         onTap: () => Modular.to.pushNamed(
-                          '/detalhes-pokemon/',
+                          '/detalhes-pokemon',
                           arguments: {
-                            'urlRequest': pokemonResult.url,
+                            'urlDetalhes': pokemonResult.url,
                           },
                         ),
                       ),

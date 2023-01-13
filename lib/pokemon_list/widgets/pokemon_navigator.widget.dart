@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:poke_dex/pokemon_list/view/pokemon_list.viewmodel.dart';
+import 'package:poke_dex/pokemon_list/views/pokemon_list.viewmodel.dart';
 
 class PokemonNavigator extends StatelessWidget {
   final PokemonListViewModel viewModel;
 
-  PokemonNavigator({
+  const PokemonNavigator({
     required this.viewModel,
     Key? key,
   }) : super(key: key);

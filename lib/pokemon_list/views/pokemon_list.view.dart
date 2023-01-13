@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:poke_dex/pokemon_list/view/pokemon_list.viewmodel.dart';
+import 'package:poke_dex/pokemon_list/views/pokemon_list.viewmodel.dart';
 import 'package:poke_dex/pokemon_list/widgets/pokemon_navigator.widget.dart';
 
 import '../widgets/pokemon_list.widget.dart';
 
 class PokemonListView extends StatefulWidget {
-  PokemonListView({Key? key}) : super(key: key);
+  const PokemonListView({Key? key}) : super(key: key);
 
   @override
   State<PokemonListView> createState() => _PokemonListViewState();

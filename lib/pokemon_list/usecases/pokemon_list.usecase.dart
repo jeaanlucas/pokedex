@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
-import '../model/pokemon_list.model.dart';
-import '../repository/pokemon_list.repository.dart';
+import 'package:poke_dex/pokemon_list/models/pokemon_list.model.dart';
+import 'package:poke_dex/pokemon_list/repositories/pokemon_list.repository.dart';
 
 class PokemonListUseCase extends Disposable {
   final PokemonListRepository _pokemonListRepository = Modular.get();

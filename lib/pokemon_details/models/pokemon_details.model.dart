@@ -1,25 +1,25 @@
 import 'dart:convert';
 
-import 'package:poke_dex/pokemon_list/model/pokemon_list_results.model.dart';
+import 'package:poke_dex/pokemon_list/models/pokemon_list_results.model.dart';
 
-class PokemonListModel {
+class PokemonDetailsModel {
   final int count;
   final String? next;
   final String? previous;
   final List<PokemonListResultsModel>? results;
 
-  PokemonListModel({
+  PokemonDetailsModel({
     required this.count,
     this.next,
     this.previous,
     this.results,
   });
 
-  factory PokemonListModel.fromJson(String str) =>
-      PokemonListModel.fromMap(json.decode(str));
+  factory PokemonDetailsModel.fromJson(String str) =>
+      PokemonDetailsModel.fromMap(json.decode(str));
 
-  factory PokemonListModel.fromMap(Map<String, dynamic> json) =>
-      PokemonListModel(
+  factory PokemonDetailsModel.fromMap(Map<String, dynamic> json) =>
+      PokemonDetailsModel(
         count: json['count'],
         next: json['next'],
         previous: json['previous'],
