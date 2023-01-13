@@ -35,6 +35,20 @@ mixin _$PokemonDetailsViewModel on _PokemonDetailsViewModelBase, Store {
         .run(() => super.obterDetalhesPokemon(url));
   }
 
+  late final _$_PokemonDetailsViewModelBaseActionController =
+      ActionController(name: '_PokemonDetailsViewModelBase', context: context);
+
+  @override
+  Color corDeAcordoComOTipo(String type) {
+    final _$actionInfo = _$_PokemonDetailsViewModelBaseActionController
+        .startAction(name: '_PokemonDetailsViewModelBase.corDeAcordoComOTipo');
+    try {
+      return super.corDeAcordoComOTipo(type);
+    } finally {
+      _$_PokemonDetailsViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

@@ -35,7 +35,7 @@ class PokemonTypesWidget extends StatelessWidget {
                               type.name.capitalize(),
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: viewModel.typesColors[index],
+                                color: viewModel.corDeAcordoComOTipo(type.name),
                               ),
                             ),
                           ),
