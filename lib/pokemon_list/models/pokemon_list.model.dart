@@ -1,13 +1,8 @@
 import 'dart:convert';
 
-import 'package:poke_dex/pokemon_list/models/pokemon_list_results.model.dart';
+import 'pokemon_list_results.model.dart';
 
 class PokemonListModel {
-  final int count;
-  final String? next;
-  final String? previous;
-  final List<PokemonListResultsModel>? results;
-
   PokemonListModel({
     required this.count,
     this.next,
@@ -31,6 +26,11 @@ class PokemonListModel {
                 ),
               ),
       );
+
+  final int count;
+  final String? next;
+  final String? previous;
+  final List<PokemonListResultsModel>? results;
 
   String toJson() => json.encode(toMap());
 

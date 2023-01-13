@@ -13,7 +13,7 @@ void main() {
   ]);
 
   Modular.to.addListener(() {
-    debugPrint("ROTA: ${Modular.to.path}");
+    debugPrint('ROTA: ${Modular.to.path}');
   });
 
   runApp(

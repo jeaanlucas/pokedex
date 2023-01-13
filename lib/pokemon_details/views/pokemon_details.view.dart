@@ -4,12 +4,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'pokemon_details.viewmodel.dart';
 
 class PokemonDetailsView extends StatefulWidget {
-  final String urlDetalhes;
-
   const PokemonDetailsView({
     required this.urlDetalhes,
     Key? key,
   }) : super(key: key);
+
+  final String urlDetalhes;
 
   @override
   State<PokemonDetailsView> createState() => _PokemonDetailsViewState();
@@ -28,26 +28,24 @@ class _PokemonDetailsViewState extends State<PokemonDetailsView> {
       _viewModel.obterDetalhesPokemon(widget.urlDetalhes);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Detalhes do pokemon',
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Detalhes do pokemon',
+          ),
         ),
-      ),
-      // body: Column(
-      //   children: [
-      //     PokemonNavigator(
-      //       viewModel: _viewModel,
-      //     ),
-      //     const SizedBox(
-      //       height: 25,
-      //     ),
-      //     PokemonList(
-      //       viewModel: _viewModel,
-      //     ),
-      //   ],
-      // ),
-    );
-  }
+        // body: Column(
+        //   children: [
+        //     PokemonNavigator(
+        //       viewModel: _viewModel,
+        //     ),
+        //     const SizedBox(
+        //       height: 25,
+        //     ),
+        //     PokemonList(
+        //       viewModel: _viewModel,
+        //     ),
+        //   ],
+        // ),
+      );
 }

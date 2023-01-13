@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:poke_dex/pokemon_list/models/pokemon_list.model.dart';
-import 'package:poke_dex/pokemon_list/repositories/pokemon_list.repository.dart';
 
 import '../models/pokemon_details.model.dart';
 import '../repositories/pokemon_details.repository.dart';

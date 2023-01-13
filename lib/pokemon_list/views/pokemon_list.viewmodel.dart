@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:poke_dex/pokemon_list/models/pokemon_list.model.dart';
-import 'package:poke_dex/pokemon_list/usecases/pokemon_list.usecase.dart';
+import '../models/pokemon_list.model.dart';
+import '../usecases/pokemon_list.usecase.dart';
 
 part 'pokemon_list.viewmodel.g.dart';
 

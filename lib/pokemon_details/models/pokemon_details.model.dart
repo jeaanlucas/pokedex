@@ -1,18 +1,15 @@
 import 'dart:convert';
 
-import 'package:poke_dex/pokemon_list/models/pokemon_list_results.model.dart';
+import 'pokemon_details_abilities.model.dart';
+import 'pokemon_details_types.model.dart';
 
 class PokemonDetailsModel {
-  final int count;
-  final String? next;
-  final String? previous;
-  final List<PokemonListResultsModel>? results;
-
   PokemonDetailsModel({
-    required this.count,
-    this.next,
-    this.previous,
-    this.results,
+    required this.id,
+    required this.name,
+    required this.frontSpriteDefault,
+    this.abilities,
+    this.types,
   });
 
   factory PokemonDetailsModel.fromJson(String str) =>
@@ -20,28 +17,50 @@ class PokemonDetailsModel {
 
   factory PokemonDetailsModel.fromMap(Map<String, dynamic> json) =>
       PokemonDetailsModel(
-        count: json['count'],
-        next: json['next'],
-        previous: json['previous'],
-        results: json['results'] == null
+        id: json['id'],
+        name: json['name'],
+        frontSpriteDefault: json['sprites']['front_default'],
+        abilities: json['abilities'] == null
             ? []
-            : List<PokemonListResultsModel>.from(
-                json['results'].map(
-                  (x) => PokemonListResultsModel.fromMap(x),
+            : List<PokemonDetailsAbilitiesModel>.from(
+                json['abilities'].map(
+                  (x) => PokemonDetailsAbilitiesModel.fromMap(x),
+                ),
+              ),
+        types: json['types'] == null
+            ? []
+            : List<PokemonDetailsTypesModel>.from(
+                json['types'].map(
+                  (x) => PokemonDetailsTypesModel.fromMap(x),
                 ),
               ),
       );
 
+  final List<PokemonDetailsAbilitiesModel>? abilities;
+  final int id;
+  final String name;
+  final String frontSpriteDefault;
+  final List<PokemonDetailsTypesModel>? types;
+
   String toJson() => json.encode(toMap());
 
   Map<String, dynamic> toMap() => {
-        'count': count,
-        'next': next,
-        'previous': previous,
-        'results': results == null
+        'id': id,
+        'name': name,
+        'sprites': {
+          'front_default': frontSpriteDefault,
+        },
+        'abilities': abilities == null
             ? []
             : List<dynamic>.from(
-                results!.map(
+                abilities!.map(
+                  (x) => x.toMap(),
+                ),
+              ),
+        'types': types == null
+            ? []
+            : List<dynamic>.from(
+                types!.map(
                   (x) => x.toMap(),
                 ),
               ),

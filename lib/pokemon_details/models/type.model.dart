@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-class PokemonListResultsModel {
-  PokemonListResultsModel({
+class TypeModel {
+  TypeModel({
     required this.name,
     required this.url,
   });
 
-  factory PokemonListResultsModel.fromJson(String str) =>
-      PokemonListResultsModel.fromMap(json.decode(str));
+  factory TypeModel.fromJson(String str) => TypeModel.fromMap(json.decode(str));
 
-  factory PokemonListResultsModel.fromMap(Map<String, dynamic> json) =>
-      PokemonListResultsModel(
+  factory TypeModel.fromMap(Map<String, dynamic> json) => TypeModel(
         name: json['name'],
         url: json['url'],
       );
