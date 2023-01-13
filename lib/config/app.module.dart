@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import '../home/views/home.view.dart';
 import '../pokemon_details/repositories/pokemon_details.repository.dart';
 import '../pokemon_details/usecases/pokemon_details.usecase.dart';
 import '../pokemon_details/views/pokemon_details.view.dart';
@@ -36,10 +37,14 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute(
       Modular.initialRoute,
+      child: (_, args) => const HomeView(),
+    ),
+    ChildRoute(
+      '/list',
       child: (_, args) => const PokemonListView(),
     ),
     ChildRoute(
-      '/detalhes-pokemon',
+      '/detalhes',
       child: (_, args) => PokemonDetailsView(
         urlDetalhes: args.data['urlDetalhes'],
         nomePokemon: args.data['nomePokemon'],
