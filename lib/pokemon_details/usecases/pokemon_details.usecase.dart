@@ -3,23 +3,26 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:poke_dex/pokemon_list/models/pokemon_list.model.dart';
 import 'package:poke_dex/pokemon_list/repositories/pokemon_list.repository.dart';
 
-class PokemonDetailsUseCase extends Disposable {
-  final PokemonListRepository _pokemonListRepository = Modular.get();
+import '../models/pokemon_details.model.dart';
+import '../repositories/pokemon_details.repository.dart';
 
-  Future<PokemonListModel?> execute(String url) async {
-    PokemonListModel? pokemonListModel;
+class PokemonDetailsUseCase extends Disposable {
+  final PokemonDetailsRepository _pokemonDetailsRepository = Modular.get();
+
+  Future<PokemonDetailsModel?> execute(String url) async {
+    PokemonDetailsModel? pokemonDetailsModel;
 
     try {
-      Response response = await _pokemonListRepository.obterListPokemons(url);
+      Response response = await _pokemonDetailsRepository.obterListPokemons(url);
 
       if (response.data != null) {
-        pokemonListModel = PokemonListModel.fromMap(response.data);
+        pokemonDetailsModel = PokemonDetailsModel.fromMap(response.data);
       }
     } catch (e) {
       rethrow;
     }
 
-    return pokemonListModel;
+    return pokemonDetailsModel;
   }
 
   @override

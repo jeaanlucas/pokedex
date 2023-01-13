@@ -25,13 +25,14 @@ mixin _$PokemonDetailsViewModel on _PokemonDetailsViewModelBase, Store {
     });
   }
 
-  late final _$carregarPokemonsAsyncAction = AsyncAction(
-      '_PokemonDetailsViewModelBase.carregarPokemons',
+  late final _$obterDetalhesPokemonAsyncAction = AsyncAction(
+      '_PokemonDetailsViewModelBase.obterDetalhesPokemon',
       context: context);
 
   @override
-  Future<void> carregarPokemons(String url) {
-    return _$carregarPokemonsAsyncAction.run(() => super.carregarPokemons(url));
+  Future<void> obterDetalhesPokemon(String url) {
+    return _$obterDetalhesPokemonAsyncAction
+        .run(() => super.obterDetalhesPokemon(url));
   }
 
   @override

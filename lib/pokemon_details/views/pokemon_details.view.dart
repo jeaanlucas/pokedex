@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import 'pokemon_details.viewmodel.dart';
 
 class PokemonDetailsView extends StatefulWidget {
   final String urlDetalhes;
@@ -13,15 +16,16 @@ class PokemonDetailsView extends StatefulWidget {
 }
 
 class _PokemonDetailsViewState extends State<PokemonDetailsView> {
-  // final PokemonListViewModel _viewModel = Modular.get();
+  final PokemonDetailsViewModel _viewModel = Modular.get();
 
-  // @override
-  // void initState() {
-  //   _carregarPokemons('https://pokeapi.co/api/v2/pokemon/');
-  //   super.initState();
-  // }
-  //
-  // void _carregarPokemons(String url) => _viewModel.carregarPokemons(url);
+  @override
+  void initState() {
+    _obterDetalhesPokemon();
+    super.initState();
+  }
+
+  void _obterDetalhesPokemon() =>
+      _viewModel.obterDetalhesPokemon(widget.urlDetalhes);
 
   @override
   Widget build(BuildContext context) {
