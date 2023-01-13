@@ -1,16 +1,27 @@
-# poke_dex
-
+# Poke_dex
 Uma pokedex para analisar seus pokemonzinhos
 
-## Getting Started
+## Instalação
 
-This project is a starting point for a Flutter application.
+Antes de tudo, execute:
+```
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+e depois:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+flutter pub run build_runner watch --delete-conflicting-outputs
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Considerações
+
+Foi utilizado Mobx ao invés de Bloc por eu gostar mais do mesmo.
+
+Também foi requisitado a listagem dos pokemons ser do tipo de scroll infinito; Eu particularmente acho 
+melhor a forma de navegação, então foi escolha própria a alteração.
+
+Também foi solicitado que a foto do pokemon e os tipos estivessem na listagem juntamente com o nome, 
+mas eu julguei que isso não seria performático, afinal, teria que fazer uma request para cada 
+pokemon listado já que a rota de listagem principal não fornece essa informação. Julguei que isso 
+tornaria o app lento ao startar e mudar a página na navegação.
