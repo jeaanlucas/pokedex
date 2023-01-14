@@ -20,6 +20,7 @@ flutter pub run build_runner watch --delete-conflicting-outputs
 dio - Utilizado para fazer requests em API's
 flutter_mobx - Utilizado para gerir o estado de toda a aplicação
 flutter_modular - Utilizado para gerir as rotas e a injeção de dependência
+image_picker - Lib utilizada para pegar imagens do device
 material_design_icons_flutter - Lib utilizada para se obter ícones diversos
 shared_preferences - Utilizado para acessar o armazenamento interno do device
 uuid - Utilizado para criar um id para os dados salvos localmente

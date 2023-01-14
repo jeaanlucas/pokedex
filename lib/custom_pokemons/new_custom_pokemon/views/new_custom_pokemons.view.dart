@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../utils/extensions/string.extension.dart';
@@ -24,15 +25,15 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final List<CustomPokemonsAbilitiesModel> _abilities = [];
-  String _pathImage = '';
+  ImagePicker picker = ImagePicker();
+  XFile? image;
 
   void _savePokemonInDevice() {
-    _pathImage = 'dada';
-
     if (_formKey.currentState!.validate()) {
       _viewModel.novoPokemon = CustomPokemonsListModel(
         uuid: widget.pokemonModel?.uuid ?? const Uuid().v1(),
-        pathImage: _pathImage,
+        // pathImage: _pathImage != null ? _pathImage!.relativePath.toString() : '',
+        pathImage: '',
         name: _nameController.text,
         abilities: _abilities,
       );
@@ -40,6 +41,27 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
       _viewModel.updateCustomPokemons(widget.pokemonModel != null);
       Modular.to.pop();
     }
+  }
+
+  void _getFromGallery() async {
+    image = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 300,
+      maxHeight: 300,
+    );
+    setState(() {});
+
+    // XFile? pickedFile = await picker.pickImage(
+    //   source: ImageSource.gallery,
+    //   maxWidth: 300,
+    //   maxHeight: 300,
+    // );
+    //
+    // if (pickedFile != null) {
+    //   setState(() {
+    //     _pathImage = pickedFile;
+    //   });
+    // }
   }
 
   @override
@@ -57,6 +79,19 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
             children: [
               Row(
                 children: [
+                  // image == null
+                  //     ?
+                  Container(
+                          color: Colors.greenAccent,
+                          child: InkWell(
+                            onTap: () => _getFromGallery(),
+                            child: const Text('Pokémon image'),
+                          ),
+                        ),
+                      // : Image.file(
+                      //     File(image!.path),
+                      //     fit: BoxFit.cover,
+                      //   ),
                   _GenericFormField(
                     controller: _nameController,
                     label: 'Name',
