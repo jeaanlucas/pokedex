@@ -1,4 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'custom_pokemon_list/repositories/custom_pokemons_list.repository.dart';
+import 'custom_pokemon_list/usecases/custom_pokemons_list.usecase.dart';
 import 'custom_pokemon_list/views/custom_pokemons_list.view.dart';
 import 'new_custom_pokemon/views/new_custom_pokemons.view.dart';
 
@@ -8,11 +10,11 @@ class CustomPokemonsModule extends Module {
   ];
 
   static final List<Bind> _usecases = [
-    // Bind<PokemonsListUseCase>((i) => PokemonsListUseCase()),
+    Bind<CustomPokemonsListUseCase>((i) => CustomPokemonsListUseCase()),
   ];
 
   static final List<Bind> _repositories = [
-    // Bind<PokemonsListRepository>((i) => PokemonsListRepository()),
+    Bind<CustomPokemonsListRepository>((i) => CustomPokemonsListRepository()),
   ];
 
   @override
