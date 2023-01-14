@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../pokemon_list/views/pokemon_list.view.dart';
+import '../../custom_pokemons/views/custom_pokemons_list.view.dart';
+import '../../pokemons/pokemons_list/views/pokemons_list.view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class HomeView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          'List Pokemons',
+                          'Pokémons',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -41,7 +42,7 @@ class HomeView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          'Create Pokemons',
+                          'Custom Pokémons',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -60,10 +61,8 @@ class HomeView extends StatelessWidget {
             ),
             body: const TabBarView(
               children: [
-                PokemonListView(),
-                Icon(
-                  MdiIcons.pokemonGo,
-                ),
+                PokemonsListView(),
+                CustomPokemonListView(),
               ],
             ),
           ),

@@ -1,29 +1,29 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../home/views/home.view.dart';
-import '../pokemon_details/repositories/pokemon_details.repository.dart';
-import '../pokemon_details/usecases/pokemon_details.usecase.dart';
-import '../pokemon_details/views/pokemon_details.view.dart';
-import '../pokemon_details/views/pokemon_details.viewmodel.dart';
-import '../pokemon_list/repositories/pokemon_list.repository.dart';
-import '../pokemon_list/usecases/pokemon_list.usecase.dart';
-import '../pokemon_list/views/pokemon_list.view.dart';
-import '../pokemon_list/views/pokemon_list.viewmodel.dart';
+import '../pokemons/pokemons_details/repositories/pokemons_details.repository.dart';
+import '../pokemons/pokemons_details/usecases/pokemons_details.usecase.dart';
+import '../pokemons/pokemons_details/views/pokemons_details.view.dart';
+import '../pokemons/pokemons_details/views/pokemons_details.viewmodel.dart';
+import '../pokemons/pokemons_list/repositories/pokemons_list.repository.dart';
+import '../pokemons/pokemons_list/usecases/pokemons_list.usecase.dart';
+import '../pokemons/pokemons_list/views/pokemons_list.view.dart';
+import '../pokemons/pokemons_list/views/pokemons_list.viewmodel.dart';
 
 class AppModule extends Module {
   static final List<Bind> _viewmodels = [
-    Bind<PokemonListViewModel>((i) => PokemonListViewModel()),
-    Bind<PokemonDetailsViewModel>((i) => PokemonDetailsViewModel()),
+    Bind<PokemonsListViewModel>((i) => PokemonsListViewModel()),
+    Bind<PokemonsDetailsViewModel>((i) => PokemonsDetailsViewModel()),
   ];
 
   static final List<Bind> _usecases = [
-    Bind<PokemonListUseCase>((i) => PokemonListUseCase()),
-    Bind<PokemonDetailsUseCase>((i) => PokemonDetailsUseCase()),
+    Bind<PokemonsListUseCase>((i) => PokemonsListUseCase()),
+    Bind<PokemonsDetailsUseCase>((i) => PokemonsDetailsUseCase()),
   ];
 
   static final List<Bind> _repositories = [
-    Bind<PokemonListRepository>((i) => PokemonListRepository()),
-    Bind<PokemonDetailsRepository>((i) => PokemonDetailsRepository()),
+    Bind<PokemonsListRepository>((i) => PokemonsListRepository()),
+    Bind<PokemonsDetailsRepository>((i) => PokemonsDetailsRepository()),
   ];
 
   static final List<Bind> _services = [
@@ -41,11 +41,11 @@ class AppModule extends Module {
     ),
     ChildRoute(
       '/list',
-      child: (_, args) => const PokemonListView(),
+      child: (_, args) => const PokemonsListView(),
     ),
     ChildRoute(
       '/detalhes',
-      child: (_, args) => PokemonDetailsView(
+      child: (_, args) => PokemonsDetailsView(
         urlDetalhes: args.data['urlDetalhes'],
         nomePokemon: args.data['nomePokemon'],
       ),
