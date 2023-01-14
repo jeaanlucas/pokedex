@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import '../models/custom_pokemons_abilities.model.dart';
 import '../models/custom_pokemons_list.model.dart';
 import '../repositories/custom_pokemons_list.repository.dart';
 
@@ -41,6 +42,17 @@ class CustomPokemonsListUseCase extends Disposable {
     }
   }
 
+  Future<void> removeCustomPokemon(
+    List<CustomPokemonsListModel> updatedList,
+  ) async {
+    try {
+      await _customPokemonsListRepository
+          .updateCustomPokemonsListLocalStorage(updatedList);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   void _adicionaPokemonEmCasoDeStorageJaPossuirAlgumPokemon(
     String? pokemonStorage,
   ) {
@@ -52,6 +64,25 @@ class CustomPokemonsListUseCase extends Disposable {
           _pokemonList.add(CustomPokemonsListModel.fromJson(poke));
         }
       }
+
+      _pokemonList.add(
+        CustomPokemonsListModel(
+          name: 'bulbasaur',
+          pathImage:
+              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+          uuid: '914dd438-9445-11ed-a1eb-0242ac120002',
+          abilities: [
+            CustomPokemonsAbilitiesModel(
+              name: 'overgrow',
+              uuid: 'adc5c3dc-9445-11ed-a1eb-0242ac120002',
+            ),
+            CustomPokemonsAbilitiesModel(
+              name: 'chlorophyll',
+              uuid: 'd6be1dac-9445-11ed-a1eb-0242ac120002',
+            ),
+          ],
+        ),
+      );
     }
   }
 

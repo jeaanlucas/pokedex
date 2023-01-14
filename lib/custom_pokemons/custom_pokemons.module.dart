@@ -1,21 +1,18 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'custom_pokemon_list/repositories/custom_pokemons_list.repository.dart';
-import 'custom_pokemon_list/usecases/custom_pokemons_list.usecase.dart';
 import 'custom_pokemon_list/views/custom_pokemons_list.view.dart';
-import 'custom_pokemon_list/views/custom_pokemons_list.viewmodel.dart';
 import 'new_custom_pokemon/views/new_custom_pokemons.view.dart';
 
 class CustomPokemonsModule extends Module {
   static final List<Bind> _viewmodels = [
-    Bind<CustomPokemonsListViewModel>((i) => CustomPokemonsListViewModel()),
+    // Bind<CustomPokemonsListViewModel>((i) => CustomPokemonsListViewModel()),
   ];
 
   static final List<Bind> _usecases = [
-    Bind<CustomPokemonsListUseCase>((i) => CustomPokemonsListUseCase()),
+    // Bind<CustomPokemonsListUseCase>((i) => CustomPokemonsListUseCase()),
   ];
 
   static final List<Bind> _repositories = [
-    Bind<CustomPokemonsListRepository>((i) => CustomPokemonsListRepository()),
+    // Bind<CustomPokemonsListRepository>((i) => CustomPokemonsListRepository()),
   ];
 
   @override
@@ -29,7 +26,9 @@ class CustomPokemonsModule extends Module {
     ),
     ChildRoute(
       '/new',
-      child: (_, args) => const NewCustomPokemonView(),
+      child: (_, args) => NewCustomPokemonView(
+        pokemonModel: args.data['pokemonModel'],
+      ),
     ),
   ];
 }

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
+
 class NewCustomPokemonView extends StatefulWidget {
-  const NewCustomPokemonView({Key? key}) : super(key: key);
+  const NewCustomPokemonView({
+    required this.pokemonModel,
+    Key? key,
+  }) : super(key: key);
+
+  final CustomPokemonsListModel pokemonModel;
 
   @override
   State<NewCustomPokemonView> createState() => _NewCustomPokemonViewState();

@@ -13,8 +13,10 @@ class CustomPokemonsListViewModel extends _CustomPokemonsListViewModelBase
 
 abstract class _CustomPokemonsListViewModelBase with Store {
   final CustomPokemonsListUseCase _customPokemonsListUseCase = Modular.get();
-  List<CustomPokemonsListModel>? pokemonList;
   CustomPokemonsListModel? novoPokemon;
+
+  @observable
+  List<CustomPokemonsListModel>? pokemonList;
 
   @observable
   bool loading = false;
@@ -36,6 +38,18 @@ abstract class _CustomPokemonsListViewModelBase with Store {
     try {
       loading = true;
       await _customPokemonsListUseCase.updateCustomPokemons(true, novoPokemon!);
+      loading = false;
+    } catch (e) {
+      loading = false;
+      rethrow;
+    }
+  }
+
+  @action
+  Future<void> removeCustomPokemon() async {
+    try {
+      loading = true;
+      await _customPokemonsListUseCase.removeCustomPokemon(pokemonList!);
       loading = false;
     } catch (e) {
       loading = false;

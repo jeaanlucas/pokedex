@@ -21,8 +21,10 @@ class PokemonsListWidget extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : Flexible(
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: viewModel.pokemonList!.results!.length,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(),
                   itemBuilder: (BuildContext context, int index) {
                     PokemonsListResultsModel pokemonResult =
                         viewModel.pokemonList!.results![index];

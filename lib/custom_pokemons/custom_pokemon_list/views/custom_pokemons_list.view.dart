@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../widgets/custom_pokemons_list.widget.dart';
 import 'custom_pokemons_list.viewmodel.dart';
 
 class CustomPokemonListView extends StatefulWidget {
@@ -24,22 +25,17 @@ class _CustomPokemonListViewState extends State<CustomPokemonListView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        // body: Column(
-        //   children: [
-        //     const SizedBox(
-        //       height: 15,
-        //     ),
-        //     PokemonNavigatorWidget(
-        //       viewModel: _viewModel,
-        //     ),
-        //     const SizedBox(
-        //       height: 25,
-        //     ),
-        //     PokemonListWidget(
-        //       viewModel: _viewModel,
-        //     ),
-        //   ],
-        // ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            CustomPokemonsListWidget(
+              viewModel: _viewModel,
+            ),
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () => Modular.to.pushNamed(
             '/custom-pokemons/new',
