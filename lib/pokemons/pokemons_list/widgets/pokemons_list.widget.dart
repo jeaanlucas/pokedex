@@ -32,22 +32,18 @@ class PokemonsListWidget extends StatelessWidget {
                     return Column(
                       children: [
                         ListTile(
-                          title: Center(
-                            child: Text(
-                              'Pokemon: ${pokemonResult.name.capitalize()}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                              ),
+                          title: Text(
+                            'Pokemon: ${pokemonResult.name.capitalize()}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
                             ),
                           ),
-                          subtitle: Center(
-                            child: Text(
-                              pokemonResult.url,
-                              style: const TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.lightBlueAccent,
-                              ),
+                          subtitle: Text(
+                            pokemonResult.url,
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.lightBlueAccent,
                             ),
                           ),
                           onTap: () => Modular.to.pushNamed(

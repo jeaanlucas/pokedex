@@ -40,7 +40,7 @@ class _CustomPokemonListViewState extends State<CustomPokemonListView> {
           onPressed: () => Modular.to.pushNamed(
             '/custom-pokemons/new',
           ),
-          tooltip: 'Criar um novo Pokémon',
+          tooltip: 'Create new custom Pokémon',
           child: const Icon(
             MdiIcons.pokeball,
           ),
