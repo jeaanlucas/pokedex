@@ -49,7 +49,7 @@ class PokemonsListWidget extends StatelessWidget {
                             ),
                           ),
                           onTap: () => Modular.to.pushNamed(
-                            '/detalhes',
+                            '/pokemons/detalhes',
                             arguments: {
                               'urlDetalhes': pokemonResult.url,
                               'nomePokemon': pokemonResult.name,

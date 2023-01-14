@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomPokemonListView extends StatefulWidget {
   const CustomPokemonListView({Key? key}) : super(key: key);
@@ -36,5 +38,14 @@ class _CustomPokemonListViewState extends State<CustomPokemonListView> {
         //     ),
         //   ],
         // ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Modular.to.pushNamed(
+            '/custom-pokemons/new',
+          ),
+          tooltip: 'Criar um novo Pokémon',
+          child: const Icon(
+            MdiIcons.pokeball,
+          ),
+        ),
       );
 }

@@ -14,6 +14,17 @@ e depois:
 flutter pub run build_runner watch --delete-conflicting-outputs
 ```
 
+## Ferramentas utilizadas
+
+```
+dio - Utilizado para fazer requests em API's
+flutter_mobx - Utilizado para gerir o estado de toda a aplicação
+flutter_modular - Utilizado para gerir as rotas e a injeção de dependência
+material_design_icons_flutter - Lib utilizada para se obter ícones diversos
+flutter_lints - Lints do Flutter para melhorar a qualidade do projeto
+build_runner & mobx_codegen - Para gerar o código necessário para que a aplicação funcione
+```
+
 ## Considerações
 
 Foi utilizado Mobx ao invés de Bloc por eu gostar mais do mesmo.

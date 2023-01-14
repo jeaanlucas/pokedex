@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../custom_pokemons/views/custom_pokemons_list.view.dart';
+import '../../custom_pokemons/custom_pokemon_list/views/custom_pokemons_list.view.dart';
 import '../../pokemons/pokemons_list/views/pokemons_list.view.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,45 +16,15 @@ class HomeView extends StatelessWidget {
               title: const Text(
                 'Pokedex by Jean :)',
               ),
-              bottom: TabBar(
+              bottom: const TabBar(
                 tabs: [
-                  Tab(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Pokémons',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          MdiIcons.pokeball,
-                        ),
-                      ],
-                    ),
+                  _TabWidget(
+                    nome: 'Pokémons',
+                    icone: MdiIcons.pokeball,
                   ),
-                  Tab(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Custom Pokémons',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          MdiIcons.pokemonGo,
-                        ),
-                      ],
-                    ),
+                  _TabWidget(
+                    nome: 'Custom Pokémons',
+                    icone: MdiIcons.pokemonGo,
                   ),
                 ],
               ),
@@ -66,6 +36,38 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      );
+}
+
+class _TabWidget extends StatelessWidget {
+  const _TabWidget({
+    required this.nome,
+    required this.icone,
+    Key? key,
+  }) : super(key: key);
+
+  final String nome;
+  final IconData icone;
+
+  @override
+  Widget build(BuildContext context) => Tab(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              nome,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Icon(
+              icone,
+            ),
+          ],
         ),
       );
 }
