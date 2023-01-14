@@ -39,7 +39,7 @@ class CustomPokemonsListModel {
         'pathImage': pathImage,
         'name': name,
         'abilities': List<dynamic>.from(
-          abilities!.map(
+          abilities.map(
             (x) => x.toMap(),
           ),
         ),
