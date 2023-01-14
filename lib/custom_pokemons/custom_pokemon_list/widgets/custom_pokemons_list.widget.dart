@@ -34,7 +34,7 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
     return formatedAbilities.substring(0, formatedAbilities.length - 2);
   }
 
-  void _remove(int index) async {
+  void _removePokemonFromList(int index) async {
     setState(() {
       widget.viewModel.pokemonList!.removeAt(index);
     });
@@ -119,7 +119,7 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
                                 ),
                                 IconButton(
                                   tooltip: 'Remove $pokemonName',
-                                  onPressed: () => _remove(index),
+                                  onPressed: () => _removePokemonFromList(index),
                                   icon: const Icon(
                                     Icons.remove_circle,
                                   ),

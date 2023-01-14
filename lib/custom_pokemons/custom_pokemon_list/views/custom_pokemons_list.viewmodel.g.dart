@@ -55,9 +55,9 @@ mixin _$CustomPokemonsListViewModel on _CustomPokemonsListViewModelBase, Store {
       context: context);
 
   @override
-  Future<void> updateCustomPokemons(String url) {
+  Future<void> updateCustomPokemons(bool atualizarPokemon) {
     return _$updateCustomPokemonsAsyncAction
-        .run(() => super.updateCustomPokemons(url));
+        .run(() => super.updateCustomPokemons(atualizarPokemon));
   }
 
   late final _$removeCustomPokemonAsyncAction = AsyncAction(

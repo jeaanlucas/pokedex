@@ -39,6 +39,9 @@ class _CustomPokemonListViewState extends State<CustomPokemonListView> {
         floatingActionButton: FloatingActionButton(
           onPressed: () => Modular.to.pushNamed(
             '/custom-pokemons/new',
+            arguments: {
+              'pokemonModel': null,
+            },
           ),
           tooltip: 'Create new custom Pokémon',
           child: const Icon(

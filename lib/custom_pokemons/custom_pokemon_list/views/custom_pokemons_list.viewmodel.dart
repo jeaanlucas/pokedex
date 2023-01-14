@@ -34,10 +34,11 @@ abstract class _CustomPokemonsListViewModelBase with Store {
   }
 
   @action
-  Future<void> updateCustomPokemons(String url) async {
+  Future<void> updateCustomPokemons(bool atualizarPokemon) async {
     try {
       loading = true;
-      await _customPokemonsListUseCase.updateCustomPokemons(true, novoPokemon!);
+      await _customPokemonsListUseCase.updateCustomPokemons(atualizarPokemon, novoPokemon!);
+      novoPokemon = null;
       loading = false;
     } catch (e) {
       loading = false;
