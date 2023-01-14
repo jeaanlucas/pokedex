@@ -72,29 +72,34 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
                         Image.network(
                           pokemon.pathImage,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              pokemonName,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              _montaListaHabilidades(pokemon.abilities),
-                              style: const TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                          ],
-                        ),
                         Expanded(
+                          flex: 2,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                pokemonName,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                _montaListaHabilidades(pokemon.abilities),
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 14.0,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Flexible(
+                          flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: Row(

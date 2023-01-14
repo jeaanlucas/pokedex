@@ -14,6 +14,15 @@ class PokemonsListWidget extends StatelessWidget {
 
   final PokemonsListViewModel viewModel;
 
+  void _pushDetails(PokemonsListResultsModel pokemonResult) =>
+      Modular.to.pushNamed(
+        '/pokemons/detalhes',
+        arguments: {
+          'urlDetalhes': pokemonResult.url,
+          'nomePokemon': pokemonResult.name,
+        },
+      );
+
   @override
   Widget build(BuildContext context) => Observer(
         builder: (_) => viewModel.loading
@@ -46,13 +55,15 @@ class PokemonsListWidget extends StatelessWidget {
                               color: Colors.lightBlueAccent,
                             ),
                           ),
-                          onTap: () => Modular.to.pushNamed(
-                            '/pokemons/detalhes',
-                            arguments: {
-                              'urlDetalhes': pokemonResult.url,
-                              'nomePokemon': pokemonResult.name,
-                            },
+                          trailing: IconButton(
+                            onPressed: () => _pushDetails(pokemonResult),
+                            icon: const Icon(
+                              Icons.navigate_next,
+                              size: 28.0,
+                              color: Colors.grey,
+                            ),
                           ),
+                          onTap: () => _pushDetails(pokemonResult),
                         ),
                       ],
                     );

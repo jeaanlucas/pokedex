@@ -5,11 +5,11 @@ import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
 
 class NewCustomPokemonView extends StatefulWidget {
   const NewCustomPokemonView({
-    required this.pokemonModel,
+    this.pokemonModel,
     Key? key,
   }) : super(key: key);
 
-  final CustomPokemonsListModel pokemonModel;
+  final CustomPokemonsListModel? pokemonModel;
 
   @override
   State<NewCustomPokemonView> createState() => _NewCustomPokemonViewState();
