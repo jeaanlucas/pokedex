@@ -1,7 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobx/mobx.dart';
+
 import '../models/custom_pokemons_list.model.dart';
 import '../usecases/custom_pokemons_list.usecase.dart';
 
@@ -19,9 +21,15 @@ abstract class _CustomPokemonsListViewModelBase with Store {
 
   @observable
   List<CustomPokemonsListModel>? pokemonList;
-
   @observable
   bool loading = false;
+  @observable
+  XFile? pickedFile;
+  @observable
+  bool showAbilityTwo = false;
+  @observable
+  bool showAbilityThree = false;
+
 
   @action
   Future<void> carregarPokemons() async {

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
@@ -10,6 +11,8 @@ import '../../../utils/image_picker.service.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_abilities.model.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
 import '../../custom_pokemon_list/views/custom_pokemons_list.viewmodel.dart';
+import '../widgets/ability_line.widget.dart';
+import '../widgets/generic_form_field.widget.dart';
 
 class NewCustomPokemonView extends StatefulWidget {
   const NewCustomPokemonView({
@@ -28,8 +31,10 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   final ImagePickerService _imagePickerService = Modular.get();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _abilityOneController = TextEditingController();
+  final TextEditingController _abilityTwoController = TextEditingController();
+  final TextEditingController _abilityThreeController = TextEditingController();
   final List<CustomPokemonsAbilitiesModel> _abilities = [];
-  XFile? _pickedFile;
 
   @override
   void initState() {
@@ -38,17 +43,36 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   }
 
   void _initScreen() {
+    _abilities.clear();
+    _viewModel.pickedFile = null;
     if (widget.pokemonModel != null) {
       _nameController.text = widget.pokemonModel!.name;
-      _pickedFile = XFile(widget.pokemonModel!.pathImage);
+      _abilityOneController.text = widget.pokemonModel!.abilities[0].name;
+      if (widget.pokemonModel!.abilities[1].name.isNotEmpty) {
+        _abilityTwoController.text = widget.pokemonModel!.abilities[1].name;
+        _viewModel.showAbilityTwo = true;
+      }
+      if (widget.pokemonModel!.abilities[2].name.isNotEmpty) {
+        _abilityThreeController.text = widget.pokemonModel!.abilities[2].name;
+        _viewModel.showAbilityThree = true;
+      }
+      _viewModel.pickedFile = XFile(widget.pokemonModel!.pathImage);
     }
   }
 
   void _savePokemonInDevice() {
+    if (_viewModel.pickedFile == null) {
+      _dialogInformeUmaImagem(context);
+      return;
+    }
+
     if (_formKey.currentState!.validate()) {
+      _fillAbilities();
+
       _viewModel.novoPokemon = CustomPokemonsListModel(
         uuid: widget.pokemonModel?.uuid ?? const Uuid().v1(),
-        pathImage: _pickedFile != null ? _pickedFile!.path : '',
+        pathImage:
+            _viewModel.pickedFile != null ? _viewModel.pickedFile!.path : '',
         name: _nameController.text,
         abilities: _abilities,
       );
@@ -58,9 +82,57 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     }
   }
 
-  void _getFromGallery() async {
-    _pickedFile = await _imagePickerService.pickImageFromGallery();
-    setState(() {});
+  void _fillAbilities() {
+    _abilities.add(
+      CustomPokemonsAbilitiesModel(
+        uuid: widget.pokemonModel?.abilities[0].uuid ?? const Uuid().v1(),
+        name: _abilityOneController.text,
+      ),
+    );
+
+    if (_abilityTwoController.text.isNotEmpty) {
+      _abilities.add(
+        CustomPokemonsAbilitiesModel(
+          uuid: widget.pokemonModel?.abilities[1].uuid ?? const Uuid().v1(),
+          name: _abilityTwoController.text,
+        ),
+      );
+    }
+
+    if (_abilityThreeController.text.isNotEmpty) {
+      _abilities.add(
+        CustomPokemonsAbilitiesModel(
+          uuid: widget.pokemonModel?.abilities[2].uuid ?? const Uuid().v1(),
+          name: _abilityThreeController.text,
+        ),
+      );
+    }
+  }
+
+  Future<void> _dialogInformeUmaImagem(BuildContext context) =>
+      showDialog<void>(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text(
+            'Please, inform an Pokémon image',
+          ),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text(
+                'Ok',
+              ),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      );
+
+  void _pickImage() async {
+    _viewModel.pickedFile = await _imagePickerService.pickImageFromGallery();
   }
 
   @override
@@ -76,32 +148,80 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
           key: _formKey,
           child: Column(
             children: [
-              Row(
-                children: [
-                  _pickedFile == null
-                      ? Container(
-                          color: Colors.greenAccent,
-                          child: InkWell(
-                            onTap: () => _getFromGallery(),
-                            child: const Text('Pokémon image'),
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.file(
-                            File(_pickedFile!.path),
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                  _GenericFormField(
-                    controller: _nameController,
-                    label: 'Name',
-                    flex: 2,
-                    isRequired: true,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Observer(
+                      builder: (_) => _viewModel.pickedFile == null
+                          ? Container(
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                color: Colors.redAccent,
+                              ),
+                              child: InkWell(
+                                onTap: () => _pickImage(),
+                                child: const Text(
+                                  'Select image',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () => _pickImage(),
+                              child: Image.file(
+                                File(_viewModel.pickedFile!.path),
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    GenericFormFieldWidget(
+                      controller: _nameController,
+                      label: 'Pokémon Name',
+                      flex: 2,
+                      isRequired: true,
+                    ),
+                  ],
+                ),
+              ),
+              AbilityLineWidget(
+                controller: _abilityOneController,
+                onPressed: () {
+                  setState(() {
+                    _viewModel.showAbilityTwo = true;
+                  });
+                },
+                label: 'Ability 1',
+                isRequired: true,
+              ),
+              Visibility(
+                visible: _viewModel.showAbilityTwo,
+                child: AbilityLineWidget(
+                  controller: _abilityTwoController,
+                  onPressed: () {
+                    setState(() {
+                      _viewModel.showAbilityThree = true;
+                    });
+                  },
+                  label: 'Ability 2',
+                ),
+              ),
+              Visibility(
+                visible: _viewModel.showAbilityThree,
+                child: AbilityLineWidget(
+                  controller: _abilityThreeController,
+                  onPressed: () {},
+                  label: 'Ability 3',
+                  showAddIcon: false,
+                ),
               ),
             ],
           ),
@@ -111,45 +231,6 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
           tooltip: 'Save Pokémon',
           child: const Icon(
             Icons.save,
-          ),
-        ),
-      );
-}
-
-class _GenericFormField extends StatelessWidget {
-  const _GenericFormField({
-    required this.label,
-    required this.flex,
-    required this.controller,
-    this.isRequired = false,
-    Key? key,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final String label;
-  final int flex;
-  final bool isRequired;
-
-  @override
-  Widget build(BuildContext context) => Flexible(
-        flex: flex,
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: TextFormField(
-            controller: controller,
-            decoration: InputDecoration(
-              border: const UnderlineInputBorder(),
-              labelText: label,
-            ),
-            validator: (value) {
-              if (isRequired) {
-                return value == null || value.isEmpty
-                    ? 'Please, fill the $label field'
-                    : null;
-              }
-
-              return null;
-            },
           ),
         ),
       );

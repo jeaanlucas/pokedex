@@ -41,6 +41,56 @@ mixin _$CustomPokemonsListViewModel on _CustomPokemonsListViewModelBase, Store {
     });
   }
 
+  late final _$pickedFileAtom = Atom(
+      name: '_CustomPokemonsListViewModelBase.pickedFile', context: context);
+
+  @override
+  XFile? get pickedFile {
+    _$pickedFileAtom.reportRead();
+    return super.pickedFile;
+  }
+
+  @override
+  set pickedFile(XFile? value) {
+    _$pickedFileAtom.reportWrite(value, super.pickedFile, () {
+      super.pickedFile = value;
+    });
+  }
+
+  late final _$showAbilityTwoAtom = Atom(
+      name: '_CustomPokemonsListViewModelBase.showAbilityTwo',
+      context: context);
+
+  @override
+  bool get showAbilityTwo {
+    _$showAbilityTwoAtom.reportRead();
+    return super.showAbilityTwo;
+  }
+
+  @override
+  set showAbilityTwo(bool value) {
+    _$showAbilityTwoAtom.reportWrite(value, super.showAbilityTwo, () {
+      super.showAbilityTwo = value;
+    });
+  }
+
+  late final _$showAbilityThreeAtom = Atom(
+      name: '_CustomPokemonsListViewModelBase.showAbilityThree',
+      context: context);
+
+  @override
+  bool get showAbilityThree {
+    _$showAbilityThreeAtom.reportRead();
+    return super.showAbilityThree;
+  }
+
+  @override
+  set showAbilityThree(bool value) {
+    _$showAbilityThreeAtom.reportWrite(value, super.showAbilityThree, () {
+      super.showAbilityThree = value;
+    });
+  }
+
   late final _$carregarPokemonsAsyncAction = AsyncAction(
       '_CustomPokemonsListViewModelBase.carregarPokemons',
       context: context);
@@ -74,7 +124,10 @@ mixin _$CustomPokemonsListViewModel on _CustomPokemonsListViewModelBase, Store {
   String toString() {
     return '''
 pokemonList: ${pokemonList},
-loading: ${loading}
+loading: ${loading},
+pickedFile: ${pickedFile},
+showAbilityTwo: ${showAbilityTwo},
+showAbilityThree: ${showAbilityThree}
     ''';
   }
 }

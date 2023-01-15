@@ -14,6 +14,7 @@ class CustomPokemonsListUseCase extends Disposable {
       String? pokemonStorage =
           await _customPokemonsListRepository.obterPokemons();
 
+      _pokemonList.clear();
       _adicionaPokemonEmCasoDeStorageJaPossuirAlgumPokemon(pokemonStorage);
 
       return _pokemonList;
