@@ -120,8 +120,13 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     }
   }
 
-  bool _checkIfIndexExists(int index) =>
-      widget.pokemonModel!.abilities.asMap().containsKey(index);
+  bool _checkIfIndexExists(int index) {
+    if (widget.pokemonModel != null) {
+      return widget.pokemonModel!.abilities.asMap().containsKey(index);
+    }
+
+    return false;
+  }
 
   Future<void> _dialogInformeUmaImagem(BuildContext context) =>
       showDialog<void>(
