@@ -1,15 +1,19 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
+
 import '../models/custom_pokemons_list.model.dart';
 import '../repositories/custom_pokemons_list.repository.dart';
 
 class CustomPokemonsListUseCase extends Disposable {
   final CustomPokemonsListRepository _customPokemonsListRepository =
       Modular.get();
-  final List<CustomPokemonsListModel> _pokemonList = [];
+  final ObservableList<CustomPokemonsListModel> _pokemonList = ObservableList<CustomPokemonsListModel>();
 
-  Future<List<CustomPokemonsListModel>> execute() async {
+  Future<ObservableList<CustomPokemonsListModel>> execute() async {
     try {
       String? pokemonStorage =
           await _customPokemonsListRepository.obterPokemons();

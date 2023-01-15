@@ -20,7 +20,7 @@ abstract class _CustomPokemonsListViewModelBase with Store {
   CustomPokemonsListModel? novoPokemon;
 
   @observable
-  List<CustomPokemonsListModel>? pokemonList;
+  ObservableList<CustomPokemonsListModel>? pokemonList;
   @observable
   bool loading = false;
   @observable
@@ -29,7 +29,6 @@ abstract class _CustomPokemonsListViewModelBase with Store {
   bool showAbilityTwo = false;
   @observable
   bool showAbilityThree = false;
-
 
   @action
   Future<void> carregarPokemons() async {

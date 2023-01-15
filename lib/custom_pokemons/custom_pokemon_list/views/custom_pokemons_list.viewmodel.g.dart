@@ -13,13 +13,13 @@ mixin _$CustomPokemonsListViewModel on _CustomPokemonsListViewModelBase, Store {
       name: '_CustomPokemonsListViewModelBase.pokemonList', context: context);
 
   @override
-  List<CustomPokemonsListModel>? get pokemonList {
+  ObservableList<CustomPokemonsListModel>? get pokemonList {
     _$pokemonListAtom.reportRead();
     return super.pokemonList;
   }
 
   @override
-  set pokemonList(List<CustomPokemonsListModel>? value) {
+  set pokemonList(ObservableList<CustomPokemonsListModel>? value) {
     _$pokemonListAtom.reportWrite(value, super.pokemonList, () {
       super.pokemonList = value;
     });
