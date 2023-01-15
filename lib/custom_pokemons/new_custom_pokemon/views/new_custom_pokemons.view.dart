@@ -45,18 +45,25 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   void _initScreen() {
     _abilities.clear();
     _viewModel.pickedFile = null;
+    _viewModel.showAbilityTwo = false;
+    _viewModel.showAbilityThree = false;
+
     if (widget.pokemonModel != null) {
+      _viewModel.pickedFile = XFile(widget.pokemonModel!.pathImage);
       _nameController.text = widget.pokemonModel!.name;
       _abilityOneController.text = widget.pokemonModel!.abilities[0].name;
-      if (widget.pokemonModel!.abilities[1].name.isNotEmpty) {
+
+      if (_checkIfIndexExists(1) &&
+          widget.pokemonModel!.abilities[1].name.isNotEmpty) {
         _abilityTwoController.text = widget.pokemonModel!.abilities[1].name;
         _viewModel.showAbilityTwo = true;
       }
-      if (widget.pokemonModel!.abilities[2].name.isNotEmpty) {
+
+      if (_checkIfIndexExists(2) &&
+          widget.pokemonModel!.abilities[2].name.isNotEmpty) {
         _abilityThreeController.text = widget.pokemonModel!.abilities[2].name;
         _viewModel.showAbilityThree = true;
       }
-      _viewModel.pickedFile = XFile(widget.pokemonModel!.pathImage);
     }
   }
 
@@ -93,7 +100,9 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     if (_abilityTwoController.text.isNotEmpty) {
       _abilities.add(
         CustomPokemonsAbilitiesModel(
-          uuid: widget.pokemonModel?.abilities[1].uuid ?? const Uuid().v1(),
+          uuid: _checkIfIndexExists(1)
+              ? widget.pokemonModel?.abilities[1].uuid ?? const Uuid().v1()
+              : const Uuid().v1(),
           name: _abilityTwoController.text,
         ),
       );
@@ -102,12 +111,17 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     if (_abilityThreeController.text.isNotEmpty) {
       _abilities.add(
         CustomPokemonsAbilitiesModel(
-          uuid: widget.pokemonModel?.abilities[2].uuid ?? const Uuid().v1(),
+          uuid: _checkIfIndexExists(2)
+              ? widget.pokemonModel?.abilities[2].uuid ?? const Uuid().v1()
+              : const Uuid().v1(),
           name: _abilityThreeController.text,
         ),
       );
     }
   }
+
+  bool _checkIfIndexExists(int index) =>
+      widget.pokemonModel!.abilities.asMap().containsKey(index);
 
   Future<void> _dialogInformeUmaImagem(BuildContext context) =>
       showDialog<void>(
