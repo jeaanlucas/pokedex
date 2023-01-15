@@ -17,36 +17,42 @@ class PokemonsNavigatorWidget extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: viewModel.pokemonList!.previous != null
-                          ? Colors.blue
-                          : Colors.grey,
-                    ),
-                    onPressed: viewModel.pokemonList!.previous != null
-                        ? () => viewModel
-                            .carregarPokemons(viewModel.pokemonList!.previous!)
-                        : null,
-                  ),
-                  const Text(
-                    'NAVIGATION',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20.0,
+                  Flexible(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: viewModel.pokemonList!.previous != null
+                            ? Colors.blue
+                            : Colors.grey,
+                      ),
+                      onPressed: viewModel.pokemonList!.previous != null
+                          ? () => viewModel.carregarPokemons(
+                              viewModel.pokemonList!.previous!)
+                          : null,
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: viewModel.pokemonList!.next != null
-                          ? Colors.blue
-                          : Colors.grey,
+                  const Flexible(
+                    child: Text(
+                      'NAVIGATION',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20.0,
+                      ),
                     ),
-                    onPressed: viewModel.pokemonList!.next != null
-                        ? () => viewModel
-                            .carregarPokemons(viewModel.pokemonList!.next!)
-                        : null,
+                  ),
+                  Flexible(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_forward,
+                        color: viewModel.pokemonList!.next != null
+                            ? Colors.blue
+                            : Colors.grey,
+                      ),
+                      onPressed: viewModel.pokemonList!.next != null
+                          ? () => viewModel
+                              .carregarPokemons(viewModel.pokemonList!.next!)
+                          : null,
+                    ),
                   ),
                 ],
               ),

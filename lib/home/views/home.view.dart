@@ -17,6 +17,7 @@ class HomeView extends StatelessWidget {
                 'Pokedex by Jean :)',
               ),
               bottom: const TabBar(
+                isScrollable: true,
                 tabs: [
                   _TabWidget(
                     nome: 'Pokémons',
