@@ -26,7 +26,6 @@ class _CustomPokemonListViewState extends State<CustomPokemonListView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(
               height: 15,

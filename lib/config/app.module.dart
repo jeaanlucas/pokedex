@@ -9,6 +9,7 @@ import '../pokemons/pokemons.module.dart';
 import '../pokemons/pokemons_list/repositories/pokemons_list.repository.dart';
 import '../pokemons/pokemons_list/usecases/pokemons_list.usecase.dart';
 import '../pokemons/pokemons_list/views/pokemons_list.viewmodel.dart';
+import '../utils/image_picker.service.dart';
 import '../utils/local_data.repository.dart';
 
 class AppModule extends Module {
@@ -30,6 +31,7 @@ class AppModule extends Module {
 
   static final List<Bind> _services = [
     Bind.factory<Dio>((i) => Dio()),
+    Bind.factory<ImagePickerService>((i) => ImagePickerService()),
   ];
 
   @override

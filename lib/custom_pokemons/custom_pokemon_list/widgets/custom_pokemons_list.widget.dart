@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -57,7 +59,7 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
                   ),
                 ),
               )
-            : Flexible(
+            : Expanded(
                 child: ListView.separated(
                   itemCount: widget.viewModel.pokemonList!.length,
                   separatorBuilder: (BuildContext context, int index) =>
@@ -69,8 +71,20 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
 
                     return Row(
                       children: [
-                        Image.network(
-                          pokemon.pathImage,
+                        Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 8.0,
+                              right: 8.0,
+                            ),
+                            child: Image.file(
+                              File(pokemon.pathImage),
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         Expanded(
                           flex: 2,
@@ -98,8 +112,8 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
                             ],
                           ),
                         ),
-                        Flexible(
-                          flex: 1,
+                        Expanded(
+                          flex: 2,
                           child: Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: Row(
@@ -119,7 +133,8 @@ class _CustomPokemonsListWidgetState extends State<CustomPokemonsListWidget> {
                                 ),
                                 IconButton(
                                   tooltip: 'Remove $pokemonName',
-                                  onPressed: () => _removePokemonFromList(index),
+                                  onPressed: () =>
+                                      _removePokemonFromList(index),
                                   icon: const Icon(
                                     Icons.remove_circle,
                                   ),

@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../utils/extensions/string.extension.dart';
+import '../../../utils/image_picker.service.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_abilities.model.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
 import '../../custom_pokemon_list/views/custom_pokemons_list.viewmodel.dart';
@@ -22,18 +25,17 @@ class NewCustomPokemonView extends StatefulWidget {
 
 class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   final CustomPokemonsListViewModel _viewModel = Modular.get();
+  final ImagePickerService _imagePickerService = Modular.get();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final List<CustomPokemonsAbilitiesModel> _abilities = [];
-  ImagePicker picker = ImagePicker();
-  XFile? image;
+  XFile? _pickedFile;
 
   void _savePokemonInDevice() {
     if (_formKey.currentState!.validate()) {
       _viewModel.novoPokemon = CustomPokemonsListModel(
         uuid: widget.pokemonModel?.uuid ?? const Uuid().v1(),
-        // pathImage: _pathImage != null ? _pathImage!.relativePath.toString() : '',
-        pathImage: '',
+        pathImage: _pickedFile != null ? _pickedFile!.path : '',
         name: _nameController.text,
         abilities: _abilities,
       );
@@ -44,24 +46,8 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   }
 
   void _getFromGallery() async {
-    image = await picker.pickImage(
-      source: ImageSource.gallery,
-      maxWidth: 300,
-      maxHeight: 300,
-    );
+    _pickedFile = await _imagePickerService.pickImageFromGallery();
     setState(() {});
-
-    // XFile? pickedFile = await picker.pickImage(
-    //   source: ImageSource.gallery,
-    //   maxWidth: 300,
-    //   maxHeight: 300,
-    // );
-    //
-    // if (pickedFile != null) {
-    //   setState(() {
-    //     _pathImage = pickedFile;
-    //   });
-    // }
   }
 
   @override
@@ -79,19 +65,23 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
             children: [
               Row(
                 children: [
-                  // image == null
-                  //     ?
-                  Container(
+                  _pickedFile == null
+                      ? Container(
                           color: Colors.greenAccent,
                           child: InkWell(
                             onTap: () => _getFromGallery(),
                             child: const Text('Pokémon image'),
                           ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.file(
+                            File(_pickedFile!.path),
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      // : Image.file(
-                      //     File(image!.path),
-                      //     fit: BoxFit.cover,
-                      //   ),
                   _GenericFormField(
                     controller: _nameController,
                     label: 'Name',
@@ -114,12 +104,12 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
 }
 
 class _GenericFormField extends StatelessWidget {
-  _GenericFormField({
-    Key? key,
+  const _GenericFormField({
     required this.label,
     required this.flex,
     required this.controller,
     this.isRequired = false,
+    Key? key,
   }) : super(key: key);
 
   final TextEditingController controller;
