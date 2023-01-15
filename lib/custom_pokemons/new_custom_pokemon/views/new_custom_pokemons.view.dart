@@ -31,6 +31,19 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   final List<CustomPokemonsAbilitiesModel> _abilities = [];
   XFile? _pickedFile;
 
+  @override
+  void initState() {
+    _initScreen();
+    super.initState();
+  }
+
+  void _initScreen() {
+    if (widget.pokemonModel != null) {
+      _nameController.text = widget.pokemonModel!.name;
+      _pickedFile = XFile(widget.pokemonModel!.pathImage);
+    }
+  }
+
   void _savePokemonInDevice() {
     if (_formKey.currentState!.validate()) {
       _viewModel.novoPokemon = CustomPokemonsListModel(
