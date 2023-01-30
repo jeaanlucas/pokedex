@@ -7,12 +7,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../utils/extensions/string.extension.dart';
-import '../../../utils/image_picker.service.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_abilities.model.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
-import '../../custom_pokemon_list/views/custom_pokemons_list.viewmodel.dart';
 import '../widgets/ability_line.widget.dart';
 import '../widgets/generic_form_field.widget.dart';
+import 'new_custom_pokemons.viewmodel.dart';
 
 class NewCustomPokemonView extends StatefulWidget {
   const NewCustomPokemonView({
@@ -27,14 +26,13 @@ class NewCustomPokemonView extends StatefulWidget {
 }
 
 class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
-  final CustomPokemonsListViewModel _viewModel = Modular.get();
-  final ImagePickerService _imagePickerService = Modular.get();
+  final NewCustomPokemonsViewModel _viewModel = Modular.get();
+
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _abilityOneController = TextEditingController();
   final TextEditingController _abilityTwoController = TextEditingController();
   final TextEditingController _abilityThreeController = TextEditingController();
-  final List<CustomPokemonsAbilitiesModel> _abilities = [];
 
   @override
   void initState() {
@@ -43,7 +41,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   }
 
   void _initScreen() {
-    _abilities.clear();
+    _viewModel.abilities.clear();
     _viewModel.pickedFile = null;
     _viewModel.showAbilityTwo = false;
     _viewModel.showAbilityThree = false;
@@ -81,7 +79,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
         pathImage:
             _viewModel.pickedFile != null ? _viewModel.pickedFile!.path : '',
         name: _nameController.text,
-        abilities: _abilities,
+        abilities: _viewModel.abilities,
       );
 
       _viewModel.updateCustomPokemons(widget.pokemonModel != null);
@@ -90,7 +88,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
   }
 
   void _fillAbilities() {
-    _abilities.add(
+    _viewModel.abilities.add(
       CustomPokemonsAbilitiesModel(
         uuid: widget.pokemonModel?.abilities[0].uuid ?? const Uuid().v1(),
         name: _abilityOneController.text,
@@ -98,7 +96,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     );
 
     if (_abilityTwoController.text.isNotEmpty) {
-      _abilities.add(
+      _viewModel.abilities.add(
         CustomPokemonsAbilitiesModel(
           uuid: _checkIfIndexExists(1)
               ? widget.pokemonModel?.abilities[1].uuid ?? const Uuid().v1()
@@ -109,7 +107,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
     }
 
     if (_abilityThreeController.text.isNotEmpty) {
-      _abilities.add(
+      _viewModel.abilities.add(
         CustomPokemonsAbilitiesModel(
           uuid: _checkIfIndexExists(2)
               ? widget.pokemonModel?.abilities[2].uuid ?? const Uuid().v1()
@@ -150,10 +148,6 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
         ),
       );
 
-  void _pickImage() async {
-    _viewModel.pickedFile = await _imagePickerService.pickImageFromGallery();
-  }
-
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -180,7 +174,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
                                 color: Colors.redAccent,
                               ),
                               child: InkWell(
-                                onTap: () => _pickImage(),
+                                onTap: () => _viewModel.pickImage(),
                                 child: const Text(
                                   'Select image',
                                   style: TextStyle(
@@ -190,7 +184,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
                               ),
                             )
                           : InkWell(
-                              onTap: () => _pickImage(),
+                              onTap: () => _viewModel.pickImage(),
                               child: Image.file(
                                 File(_viewModel.pickedFile!.path),
                                 width: 80,

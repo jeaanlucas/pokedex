@@ -27,7 +27,8 @@ class PokemonsNavigatorWidget extends StatelessWidget {
                       ),
                       onPressed: viewModel.pokemonList!.previous != null
                           ? () => viewModel.carregarPokemons(
-                              viewModel.pokemonList!.previous!)
+                                viewModel.pokemonList!.previous!,
+                              )
                           : null,
                     ),
                   ),

@@ -1,18 +1,17 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'custom_pokemon_list/views/custom_pokemons_list.view.dart';
 import 'new_custom_pokemon/views/new_custom_pokemons.view.dart';
+import 'new_custom_pokemon/views/new_custom_pokemons.viewmodel.dart';
 
 class CustomPokemonsModule extends Module {
   static final List<Bind> _viewmodels = [
-    // Bind<CustomPokemonsListViewModel>((i) => CustomPokemonsListViewModel()),
+    Bind<NewCustomPokemonsViewModel>((i) => NewCustomPokemonsViewModel()),
   ];
 
   static final List<Bind> _usecases = [
-    // Bind<CustomPokemonsListUseCase>((i) => CustomPokemonsListUseCase()),
   ];
 
   static final List<Bind> _repositories = [
-    // Bind<CustomPokemonsListRepository>((i) => CustomPokemonsListRepository()),
   ];
 
   @override
