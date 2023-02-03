@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../config/constants.dart';
 import '../widgets/pokemons_list.widget.dart';
 import '../widgets/pokemons_navigator.widget.dart';
 import 'pokemons_list.viewmodel.dart';
@@ -17,7 +18,7 @@ class _PokemonsListViewState extends State<PokemonsListView> {
 
   @override
   void initState() {
-    _carregarPokemons('https://pokeapi.co/api/v2/pokemon/');
+    _carregarPokemons(pokemonUrl);
     super.initState();
   }
 

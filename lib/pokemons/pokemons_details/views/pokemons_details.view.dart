@@ -37,7 +37,7 @@ class _PokemonsDetailsViewState extends State<PokemonsDetailsView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Pokemon pokemons_details',
+            'Pokemon details',
           ),
         ),
         body: Column(

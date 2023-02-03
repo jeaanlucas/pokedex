@@ -132,7 +132,7 @@ class _NewCustomPokemonViewState extends State<NewCustomPokemonView> {
         barrierDismissible: true,
         builder: (BuildContext context) => AlertDialog(
           title: const Text(
-            'Please, inform an Pokémon image',
+            'Please, inform an image',
           ),
           actions: [
             TextButton(

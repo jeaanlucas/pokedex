@@ -34,7 +34,8 @@ abstract class _NewCustomPokemonsViewModelBase with Store {
   @action
   Future<void> updateCustomPokemons(bool atualizarPokemon) async {
     try {
-      await _customPokemonsListUseCase.updateCustomPokemons(atualizarPokemon, novoPokemon!);
+      await _customPokemonsListUseCase.updateCustomPokemons(
+          atualizarPokemon, novoPokemon!);
       novoPokemon = null;
     } catch (e) {
       rethrow;

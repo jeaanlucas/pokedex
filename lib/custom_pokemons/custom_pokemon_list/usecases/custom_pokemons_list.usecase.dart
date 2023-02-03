@@ -11,7 +11,8 @@ import '../repositories/custom_pokemons_list.repository.dart';
 class CustomPokemonsListUseCase extends Disposable {
   final CustomPokemonsListRepository _customPokemonsListRepository =
       Modular.get();
-  final ObservableList<CustomPokemonsListModel> _pokemonList = ObservableList<CustomPokemonsListModel>();
+  final ObservableList<CustomPokemonsListModel> _pokemonList =
+      ObservableList<CustomPokemonsListModel>();
 
   Future<ObservableList<CustomPokemonsListModel>> execute() async {
     try {
