@@ -1,0 +1,26 @@
+name: home_pokemons
+description: Home layer
+version: 0.0.1
+homepage: ''
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  custom_pokemons:
+    path: '../custom_pokemons'
+  original_pokemons:
+    path: '../original_pokemons'
+  commons_dependencies:
+    path: '../commons_dependencies'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:

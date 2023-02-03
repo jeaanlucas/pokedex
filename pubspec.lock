@@ -41,6 +41,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  commons_dependencies:
+    dependency: "direct main"
+    description:
+      path: "features/commons_dependencies"
+      relative: true
+    source: path
+    version: "0.0.1"
   cross_file:
     dependency: transitive
     description:
@@ -151,6 +158,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  home_pokemons:
+    dependency: "direct main"
+    description:
+      path: "features/home_pokemons"
+      relative: true
+    source: path
+    version: "0.0.1"
   http:
     dependency: transitive
     description:

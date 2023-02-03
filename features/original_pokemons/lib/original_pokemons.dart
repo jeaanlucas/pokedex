@@ -1,7 +1,3 @@
-library original_pokemons;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'app/pokemons.module.dart';
+export 'app/pokemons_list/views/pokemons_list.view.dart';
+export 'app/pokemons_details/views/pokemons_details.view.dart';
