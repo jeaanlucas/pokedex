@@ -1,0 +1,26 @@
+name: commons_dependencies
+description: Commons dependencies for pokedex project
+version: 0.0.1
+homepage: ''
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  material_design_icons_flutter: 6.0.7096
+  image_picker: ^0.8.6
+  shared_preferences: ^2.0.15
+  uuid: ^3.0.7
+  dio: ^4.0.0
+  flutter_mobx: ^2.0.0
+  flutter_modular: ^5.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
