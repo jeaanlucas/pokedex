@@ -2,8 +2,8 @@ import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'config/app.module.dart';
-import 'config/app.widget.dart';
+import 'app.module.dart';
+import 'app.widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
