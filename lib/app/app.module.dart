@@ -1,7 +1,7 @@
 import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:custom_pokemons/custom_pokemons.dart';
 import 'package:home_pokemons/app/home.module.dart';
-import 'package:original_pokemons/original_pokemons.dart';
+import 'package:original_pokemons/app/pokemons.module.dart';
 
 class AppModule extends Module {
   static final List<Bind> _repositories = [

@@ -44,7 +44,7 @@ packages:
   commons_dependencies:
     dependency: "direct main"
     description:
-      path: "features/commons_dependencies"
+      path: "modules/commons_dependencies"
       relative: true
     source: path
     version: "0.0.1"
@@ -67,7 +67,7 @@ packages:
   custom_pokemons:
     dependency: "direct main"
     description:
-      path: "features/custom_pokemons"
+      path: "modules/custom_pokemons"
       relative: true
     source: path
     version: "0.0.1"
@@ -161,7 +161,7 @@ packages:
   home_pokemons:
     dependency: "direct main"
     description:
-      path: "features/home_pokemons"
+      path: "modules/home_pokemons"
       relative: true
     source: path
     version: "0.0.1"
@@ -296,7 +296,7 @@ packages:
   original_pokemons:
     dependency: "direct main"
     description:
-      path: "features/original_pokemons"
+      path: "modules/original_pokemons"
       relative: true
     source: path
     version: "0.0.1"

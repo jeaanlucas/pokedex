@@ -10,13 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
   custom_pokemons:
-    path: 'features/custom_pokemons'
+    path: 'modules/custom_pokemons'
   original_pokemons:
-    path: 'features/original_pokemons'
+    path: 'modules/original_pokemons'
   home_pokemons:
-    path: 'features/home_pokemons'
+    path: 'modules/home_pokemons'
   commons_dependencies:
-    path: 'features/commons_dependencies'
+    path: 'modules/commons_dependencies'
 
 dev_dependencies:
   flutter_test:
