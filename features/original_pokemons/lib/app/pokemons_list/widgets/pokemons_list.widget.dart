@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:commons_dependencies/commons_dependencies.dart';
+import 'package:flutter/material.dart';
+
 import '../models/pokemons_list_results.model.dart';
 import '../views/pokemons_list.viewmodel.dart';
 

@@ -1,6 +1,5 @@
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../widgets/custom_pokemons_list.widget.dart';
 import 'custom_pokemons_list.viewmodel.dart';

@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:commons_dependencies/commons_dependencies.dart';
+import 'package:flutter/material.dart';
+
 import '../widgets/pokemons_abilities.widget.dart';
 import '../widgets/pokemons_pictures.widget.dart';
 import '../widgets/pokemons_types.widget.dart';

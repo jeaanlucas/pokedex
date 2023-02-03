@@ -1,6 +1,6 @@
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import 'config/app.module.dart';
 import 'config/app.widget.dart';

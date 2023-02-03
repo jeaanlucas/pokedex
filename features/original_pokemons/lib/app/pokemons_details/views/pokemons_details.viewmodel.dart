@@ -1,9 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import 'package:commons_dependencies/commons_dependencies.dart';
 import '../models/pokemons_details.model.dart';
 import '../usecases/pokemons_details.usecase.dart';
 

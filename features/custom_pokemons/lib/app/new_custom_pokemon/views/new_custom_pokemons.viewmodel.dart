@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:mobx/mobx.dart';
 
-import 'package:commons_dependencies/commons_dependencies.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_abilities.model.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
 import '../../custom_pokemon_list/usecases/custom_pokemons_list.usecase.dart';
@@ -32,7 +32,9 @@ abstract class _NewCustomPokemonsViewModelBase with Store {
   Future<void> updateCustomPokemons(bool atualizarPokemon) async {
     try {
       await _customPokemonsListUseCase.updateCustomPokemons(
-          atualizarPokemon, novoPokemon!);
+        atualizarPokemon,
+        novoPokemon!,
+      );
       novoPokemon = null;
     } catch (e) {
       rethrow;
@@ -40,7 +42,7 @@ abstract class _NewCustomPokemonsViewModelBase with Store {
   }
 
   @action
-  void pickImage() async {
+  Future<void> pickImage() async {
     pickedFile = await _imagePickerService.pickImageFromGallery();
   }
 }

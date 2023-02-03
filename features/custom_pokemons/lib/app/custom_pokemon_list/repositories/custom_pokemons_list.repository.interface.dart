@@ -1,5 +1,4 @@
-import 'package:flutter_modular/flutter_modular.dart';
-
+import 'package:commons_dependencies/commons_dependencies.dart';
 import '../models/custom_pokemons_list.model.dart';
 
 abstract class ICustomPokemonsListRepository extends Disposable {

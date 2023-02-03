@@ -1,5 +1,6 @@
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+
 import '../views/pokemons_details.viewmodel.dart';
 
 class PokemonsPicturesWidget extends StatelessWidget {

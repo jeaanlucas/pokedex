@@ -1,5 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:commons_dependencies/commons_dependencies.dart';
 import '../models/pokemons_list.model.dart';
 import '../repositories/pokemons_list.repository.dart';
 

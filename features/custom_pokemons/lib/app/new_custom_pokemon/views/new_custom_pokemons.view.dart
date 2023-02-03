@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:commons_dependencies/commons_dependencies.dart';
 import 'package:flutter/material.dart';
 
-import 'package:commons_dependencies/commons_dependencies.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_abilities.model.dart';
 import '../../custom_pokemon_list/models/custom_pokemons_list.model.dart';
 import '../widgets/ability_line.widget.dart';
