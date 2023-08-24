@@ -89,7 +89,7 @@ mixin _$NewCustomPokemonsViewModel on _NewCustomPokemonsViewModelBase, Store {
       context: context);
 
   @override
-  Future pickImage() {
+  Future<void> pickImage() {
     return _$pickImageAsyncAction.run(() => super.pickImage());
   }
 

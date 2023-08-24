@@ -1,25 +1,19 @@
 # Pokedex
-Uma pokedex para analisar seus pokemonzinhos :)
+Uma pokedex para analisar e criar seus pokemonzinhos :)
 
 ## Instalação
 
-Antes de tudo, execute:
+Antes de tudo, execute na raiz do projeto:
 
-```
-flutter pub get
-```
-
-e depois:
-
-```
-flutter pub run build_runner watch --delete-conflicting-outputs
+```sh
+bash setup.sh
 ```
 
 ## Ferramentas utilizadas
 
 **dio** - Utilizado para fazer requests em API's<br>
 **flutter_mobx** - Utilizado para gerir o estado de toda a aplicação<br>
-**flutter_modular** - Utilizado para gerir as rotas e a injeção de dependência<br>
+**flutter_modular** - Utilizado para gerir as rotas e realizar a injeção de dependência<br>
 **image_picker** - Lib utilizada para pegar imagens do device<br>
 **material_design_icons_flutter** - Lib utilizada para se obter ícones diversos<br>
 **shared_preferences** - Utilizado para acessar o armazenamento interno do device<br>
